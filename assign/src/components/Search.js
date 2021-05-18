@@ -27,11 +27,8 @@ class Search extends React.Component {
     }
 
     getData(id) {
-        axios.get('https://jsonplaceholder.typicode.com/users/'+id,{
-            headers: {
-
-            },
-        }).then((response) => {
+        axios.get('https://jsonplaceholder.typicode.com/users/'+id)
+        .then((response) => {
             this.setState({
                 name:response.data.name,
                 userName: response.data.username,

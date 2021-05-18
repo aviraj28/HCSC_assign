@@ -31,12 +31,10 @@ class Count extends React.Component {
     }
 
     getCount(id) {
-        axios.get('https://jsonplaceholder.typicode.com/todos/'+id, {
-            headers: {
-
-            },
-        }).then((response) => {
+        axios.get('https://jsonplaceholder.typicode.com/todos/'+id)
+        .then((response) => {
             this.setState({
+                compelted: response.data.compelted,
                 title: response.data.title
             })
         }).catch((error) => {
