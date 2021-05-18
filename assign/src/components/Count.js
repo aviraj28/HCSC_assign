@@ -6,13 +6,11 @@ class Count extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            compelted: [],
+            compelted: false,
             value: null,
             count: 1,
             title: ''
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
@@ -40,6 +38,9 @@ class Count extends React.Component {
         }).catch((error) => {
             console.log(error);
         });
+        if(this.state.compelted) {
+            this.setState({ count: this.state.count + 1 })   
+        }
     }
     render() {
         return (
@@ -51,11 +52,18 @@ class Count extends React.Component {
                 </label>
                 <button type="submit" onSubmit={this.handleSubmit}> Submit </button>
                 </form>
+               
                 <br />
-                <button type="submit" onClick={this.handleCount}> Count </button>
-                <Title
+                <p>
+                    Click count to increament and see title
+                </p>
+                <button onClick={this.handleCount}> Count </button>
+                <p>
+                    Title: {this.state.title}
+                </p>
+                {/* <Title
                     title={this.state.title}
-                />
+                /> */}
             </div>
         )
 
